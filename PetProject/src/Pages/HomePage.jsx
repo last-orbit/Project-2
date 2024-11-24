@@ -6,18 +6,21 @@ import axios from 'axios';
 {
   /**
     APIs
-    cats profile data: base endpoint: 'https://www.freetestapi.com/apis/cats'
-    cats imgs: base endpoint: https://www.cataas.com
+    cats profile data: 'https://www.freetestapi.com/apis/cats'  
+    cats imgs: https://api.thecatapi.com/v1/images/search?limit=10 for more imgs a key is needed
+
+    http://localhost:5005/cats for cat data
+    http://localhost:5005/catpics for cat pictures
     */
 }
 const HomePage = () => {
-  console.log('hello');
+  //console.log('hello');
   const [cats, setCats] = useState([]);
   useEffect(() => {
-    axios('https://api.thecatapi.com/v1/images/search?limit=10')
+    axios('http://localhost:5005/cats')
       .then((response) => {
         setCats(response.data);
-        console.log('hello', response.data);
+        console.log('cat data', response.data);
       })
       .catch((err) => console.log(err));
   }, []);

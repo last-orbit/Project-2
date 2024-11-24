@@ -6,49 +6,80 @@ import axios from 'axios';
 {
   /**
     APIs
-    cats profile data: base endpoint: 'https://www.freetestapi.com/apis/cats'
-    cats imgs: base endpoint: https://www.cataas.com
+    cats profile data: base endpoint: 'https://www.freetestapi.com/apis/cats' No access-control-allow-origin header is present on the requested resource.
+    cats imgs: base endpoint: https://www.cataas.com can't get random image
+    cats imgs: base endpoint: https://api.thecatapi.com/v1/images/search gives random image and it works
+    dog imgs : https://dog.ceo/api/breeds/image/random gives random image and it works
     */
 }
 const HomePage = () => {
-  console.log('hello');
-  const [cats, setCats] = useState([]);
+  // console.log('hello');
+  const [catImage, setCatImage] = useState([]);
+
   useEffect(() => {
-    axios('https://api.thecatapi.com/v1/images/search?limit=10')
-      .then((response) => {
-        setCats(response.data);
-        console.log('hello', response.data);
-      })
-      .catch((err) => console.log(err));
+    // axios('https://api.thecatapi.com/v1') this is what we had on friday
+    //   .then((response) => {
+    //     setCats(response.data);
+    //     console.log('hello', response.data);
+    //   })
+    //   .catch((err) => console.log(err));
+    // This is what we did on Friday
+    async function fetchCats() {
+      // e.preventDefault()
+      try {
+        const { data } = await axios.get('https://freetestapi.com/api/v1/cats');
+        setCatImage(data);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchCats();
   }, []);
 
   return (
     <div>
       <NavBar />
       <div className='main-container'>
-        <div className='swipe-left'>{/**will become a button */}</div>
-        <Link to='/profile/:id'>
-          <div className='profile-container'>
-            <div>
-              <div>
-                <img src={''} alt='cat photo' />
-              </div>
-              <div className='info-container'>
-                <p className='basic-info'></p>
-                <div className='tweets'>
-                  <p>tweet</p>
+        <div className='swipe-left'>
+          <button>Swipe Left</button>
+        </div>
+        <div className='cats-container'>
+          {/* { {catImage.map((cat) => (
+            <Link key={cat} to={`/profile/${cat}`}>
+              <div className='profile-container'>
+                <img src={cat.message} alt='A cute cat' />
+                <div className='info-container'>
                 </div>
               </div>
-            </div>
-            <button></button>
-            {/*hook up button ?? */}
-          </div>
-        </Link>
-        <div className='swipe-right'>{/**will become a button */}</div>
+            </Link>
+          ))} This is for thecatapi image}
+          {catImage ? (
+            <Link to={`/profile/${catImage.id}`}>
+              <div className='profile-container'>
+                <img src={catImage} alt='A cute cat' />
+                <div className='info-container'>
+                </div>
+              </div>
+            </Link>
+          ) : (
+            <p> Loading ....</p>
+          )} this is for the dog api and works*/}
+
+          {catImage && catImage.map((cat) => (
+            <Link key={cat.id} to={`/profile/${cat.id}`}>
+              <div className='profile-container'>
+                <img src={cat.image} alt='A cute cat' />
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className='swipe-right'>
+          <button>Swipe Right</button>
+        </div>
       </div>
       <Footer />
     </div>
   );
 };
-
 export default HomePage;

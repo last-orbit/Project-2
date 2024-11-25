@@ -15,7 +15,7 @@ function App() {
         {/* <Route path='/profile/:id' /> */}
         <Route path='/addPet' />
         <Route path='/updatePet' />
-        <Route path='/*' />
+        <Route path='*' />
       </Routes>
       <Footer />
     </div>

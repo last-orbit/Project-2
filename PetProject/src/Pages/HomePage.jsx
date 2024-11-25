@@ -16,6 +16,7 @@ import axios from 'axios';
 const HomePage = () => {
   //console.log('hello');
   const [cats, setCats] = useState([]);
+  const [catPic, setCatPic] = useState([]);
   useEffect(() => {
     axios('http://localhost:5005/cats')
       .then((response) => {
@@ -25,29 +26,39 @@ const HomePage = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios('http://localhost:5005/catpics/4dm')
+      .then((response) => {
+        setCatPic(response.data);
+
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <NavBar />
       <div className='main-container'>
-        <div className='swipe-left'>{/**will become a button */}</div>
-        <Link to='/profile/:id'>
+        <div className='swipe left' >{/**will become a button */}</div>
+        <div className='ui-container'>
           <div className='profile-container'>
             <div>
-              <div>
-                <img src={''} alt='cat photo' />
+              <img src={catPic.url} alt='cat photo' />
+            </div>
+            <div className='info-container'>
+              <div className='basic-info'>
+                <p>info</p>
               </div>
-              <div className='info-container'>
-                <p className='basic-info'></p>
-                <div className='tweets'>
-                  <p>tweet</p>
-                </div>
+              <div className='tweets'>
+                <p>tweet</p>
               </div>
             </div>
-            <button></button>
-            {/*hook up button ?? */}
           </div>
-        </Link>
-        <div className='swipe-right'>{/**will become a button */}</div>
+          <Link to='/profile/:id'>
+            <div className='hook-up-button'></div>
+          </Link>
+        </div>
+        <div className='swipe right'>{/**will become a button */}</div>
       </div>
       <Footer />
     </div>

@@ -1,4 +1,4 @@
- No import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
 import Footer from '../Components/Footer';
@@ -17,7 +17,7 @@ import axios from 'axios';
 }
 const HomePage = () => {
   // //console.log('hello');
-  const [catImage, setCatImage] = useState([]);
+  const [cats, setCats] = useState([]);
 
   useEffect(() => {
     axios('http://localhost:5005/cats')
@@ -55,15 +55,15 @@ const HomePage = () => {
             </Link>
           ) : (
             <p> Loading ....</p>
-          )} this is for the dog api and works*/}
+          )} this is for the dog api and works}
 
-          {catImage && catImage.map((cat) => (
+          {cats && cats.map((cat) => (
             <Link key={cat.id} to={`/profile/${cat.id}`}>
               <div className='profile-container'>
                 <img src={cat.image} alt='A cute cat' />
               </div>
             </Link>
-          ))}
+          )) This was for an another API I couldn't get to work*/}
         </div>
         <div className='swipe-right'>
           <button>Swipe Right</button>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+ No import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
 import Footer from '../Components/Footer';
@@ -6,35 +6,26 @@ import axios from 'axios';
 {
   /**
     APIs
-    cats profile data: base endpoint: 'https://www.freetestapi.com/apis/cats' No access-control-allow-origin header is present on the requested resource.
+    cats profile data: 'https://www.freetestapi.com/apis/cats' No access-control-allow-origin header is present on the requested resource
     cats imgs: base endpoint: https://www.cataas.com can't get random image
-    cats imgs: base endpoint: https://api.thecatapi.com/v1/images/search gives random image and it works
+    cats imgs: https://api.thecatapi.com/v1/images/search?limit=10 for more imgs a key is needed
     dog imgs : https://dog.ceo/api/breeds/image/random gives random image and it works
+
+    http://localhost:5005/cats for cat data
+    http://localhost:5005/catpics for cat pictures
     */
 }
 const HomePage = () => {
-  // console.log('hello');
+  // //console.log('hello');
   const [catImage, setCatImage] = useState([]);
 
   useEffect(() => {
-    // axios('https://api.thecatapi.com/v1') this is what we had on friday
-    //   .then((response) => {
-    //     setCats(response.data);
-    //     console.log('hello', response.data);
-    //   })
-    //   .catch((err) => console.log(err));
-    // This is what we did on Friday
-    async function fetchCats() {
-      // e.preventDefault()
-      try {
-        const { data } = await axios.get('https://freetestapi.com/api/v1/cats');
-        setCatImage(data);
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    fetchCats();
+    axios('http://localhost:5005/cats')
+      .then((response) => {
+        setCats(response.data);
+        console.log('cat data', response.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (

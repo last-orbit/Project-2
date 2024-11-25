@@ -18,7 +18,7 @@ import axios from 'axios';
 const HomePage = () => {
   // //console.log('hello');
   const [cats, setCats] = useState([]);
-
+  const [catPic, setCatPic] = useState([]);
   useEffect(() => {
     axios('http://localhost:5005/cats')
       .then((response) => {
@@ -28,49 +28,55 @@ const HomePage = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios('http://localhost:5005/catpics/4dm')
+      .then((response) => {
+        setCatPic(response.data);
+
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  /* {cats.map((cat) => (
+    <Link key={cat} to={`/profile/${cat}`}>
+      <div className='profile-container'>
+        <img src={cat.url} alt='A cute cat' />
+        <div className='info-container'>
+        </div>
+      </div>
+    </Link>
+  ))}
+ */
   return (
     <div>
       <NavBar />
       <div className='main-container'>
-        <div className='swipe-left'>
-          <button>Swipe Left</button>
-        </div>
-        <div className='cats-container'>
-          {/* { {catImage.map((cat) => (
-            <Link key={cat} to={`/profile/${cat}`}>
-              <div className='profile-container'>
-                <img src={cat.message} alt='A cute cat' />
-                <div className='info-container'>
-                </div>
+        <div className='swipe left' >{/**will become a button */}</div>
+        <div className='ui-container'>
+          <div className='profile-container'>
+            <div>
+              <img src={catPic.url} alt='cat photo' />
+            </div>
+            <div className='info-container'>
+              <div className='basic-info'>
+                <p>info</p>
               </div>
-            </Link>
-          ))} This is for thecatapi image}
-          {catImage ? (
-            <Link to={`/profile/${catImage.id}`}>
-              <div className='profile-container'>
-                <img src={catImage} alt='A cute cat' />
-                <div className='info-container'>
-                </div>
+              <div className='tweets'>
+                <p>tweet</p>
               </div>
-            </Link>
-          ) : (
-            <p> Loading ....</p>
-          )} this is for the dog api and works}
 
-          {cats && cats.map((cat) => (
-            <Link key={cat.id} to={`/profile/${cat.id}`}>
-              <div className='profile-container'>
-                <img src={cat.image} alt='A cute cat' />
-              </div>
+            </div>
+            <Link to='/profile/:id'>
+              <div className='hook-up-button'></div>
             </Link>
-          )) This was for an another API I couldn't get to work*/}
-        </div>
-        <div className='swipe-right'>
-          <button>Swipe Right</button>
+            <div className='swipe right'>{/**will become a button */}</div>
+          </div>
         </div>
       </div>
       <Footer />
     </div>
+
+
   );
 };
 export default HomePage;

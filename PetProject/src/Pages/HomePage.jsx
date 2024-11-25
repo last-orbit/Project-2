@@ -18,24 +18,42 @@ import axios from 'axios';
 const HomePage = () => {
   // //console.log('hello');
   const [cats, setCats] = useState([]);
-  const [catPic, setCatPic] = useState([]);
+  const [catPic, setCatPic] = useState({});
+  const [randomCat, setRandomCat] = useState({});
+
+  const [profileId, setProfileId] = useState(1);
+  const [imageIndex, setImageIndex] = useState(randomIndex(10));
+
+  function randomIndex(max) {
+    return Math.floor(Math.random() * max) + 1;
+  }
+  function getRandomIdCat(arr) {
+    return arr.at(randomIndex(arr.length));
+  }
+
   useEffect(() => {
     axios('http://localhost:5005/cats')
-      .then((response) => {
-        setCats(response.data);
-        console.log('cat data', response.data);
-      })
+      .then((response) => setCats(response.data))
       .catch((err) => console.log(err));
   }, []);
+  //console.log(cats);
 
-  useEffect(() => {
-    axios('http://localhost:5005/catpics/4dm')
-      .then((response) => {
-        setCatPic(response.data);
+  //get array of all cats ids - pick value at random index - set id value as fetch parameter
+  const getRandomProfile = () => {
+    let kitty = getRandomIdCat(cats);
 
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    const profile = axios.get(`http://localhost:5005/cats/${profileId}`);
+    const image = axios.get(`http://localhost:5005/catpics/${imageIndex}`);
+    Promise.all([profile, image]).then((response) => {
+
+      setRandomCat(response.at(0).data);
+      setProfileId(kitty.id);
+
+      setCatPic(response.at(1).data);
+      setImageIndex(randomIndex(10));
+
+    }).catch((err) => console.log(err));
+  };
 
   /* {cats.map((cat) => (
     <Link key={cat} to={`/profile/${cat}`}>
@@ -46,37 +64,35 @@ const HomePage = () => {
       </div>
     </Link>
   ))}
- */
+  */
   return (
     <div>
       <NavBar />
       <div className='main-container'>
-        <div className='swipe left' >{/**will become a button */}</div>
+        <div className='swipe left' ></div>
         <div className='ui-container'>
           <div className='profile-container'>
             <div>
-              <img src={catPic.url} alt='cat photo' />
+              <img className='foto' src={catPic.url} alt='cat photo' />
             </div>
             <div className='info-container'>
               <div className='basic-info'>
-                <p>info</p>
+                <p>{randomCat.name}</p>
+                <p>{randomCat.origin}</p>
               </div>
               <div className='tweets'>
-                <p>tweet</p>
+                <p>find a tweet api... third call -.-</p>
               </div>
-
             </div>
-            <Link to='/profile/:id'>
-              <div className='hook-up-button'></div>
-            </Link>
-            <div className='swipe right'>{/**will become a button */}</div>
           </div>
+          <Link to={`/profile/${randomCat.id}`}>
+            <div className='hook-up-button'></div>
+          </Link>
         </div>
+        <div className='swipe right' onClick={getRandomProfile}>{/**will become a button */}</div>
       </div>
       <Footer />
     </div>
-
-
   );
 };
 export default HomePage;

@@ -101,6 +101,12 @@ footer {
   min-height: 100px;
 }
 
+.foto {
+  width: 700px;
+  height: 500px;
+  ;
+}
+
 .tweets {
   border-radius: 10px;
   min-height: 50px;

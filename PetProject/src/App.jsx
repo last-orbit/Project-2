@@ -4,6 +4,7 @@ import './App.css';
 import Footer from './Components/Footer';
 import NavBar from './Components/NavBar';
 import HomePage from './Pages/HomePage';
+import Detailspage from './Pages/Detailspage';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/favorites' />
-        {/* <Route path='/profile/:id' /> */}
+        <Route path='/profile/:id' element={<Detailspage />} />
         <Route path='/addPet' />
         <Route path='/updatePet' />
         <Route path='*' />

@@ -24,7 +24,7 @@
 
 body {
   background-color: var(--light-beige);
-  color: white;
+  color: black;
   margin: 0;
   padding: 0;
 }
@@ -38,6 +38,10 @@ footer {
   bottom: 0;
   width: 100%;
   height: 5vh;
+}
+footer p {
+  font-size: 0.8rem;
+
 }
 
 /***********COMPONENTS*****************/
@@ -161,7 +165,8 @@ footer {
   top: 0;
 }
 
-/*AddPet Page*/
+/**************AddPet Page*****************/
+/*elements*/
 form {
   display: flex;
   flex-direction: column;
@@ -171,6 +176,15 @@ form {
   width: 50%;
   min-height: 50vh;
   background-color: var(--gray);
+}
+
+input {
+  width: 100%;
+  padding: 1em;
+  line-height: 1.1;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
 }
 
 /*classes*/
@@ -190,17 +204,6 @@ form {
   margin: 20px;
 }
 
-input {
-  width: 100%;
-  padding: 1em;
-  line-height: 1.1;
-  background-color: #f9f9f9;
-  border: 1px solid #e5e5e5;
-  border-radius: 3px;
-
-
-}
-
 .addPet-button {
   display: block;
   width: 200px;
@@ -209,11 +212,21 @@ input {
   background-color: var(--bright-pink);
   border: none;
   border-radius: 20px;
+  cursor: pointer;
 }
 
+/**************Update Page*****************/
+/*IDs*/
+#row-buttons{
+  display: flex;
+  gap: 1.0625rem;
+}
+/*classes*/
+.delete-button{
+  background-color: rgba(205, 19, 19, 0.696);
+}
 
-
-/*details page*/
+/**************Detail Page*****************/
 /*classes*/
 .pet-details {
   display: flex;
@@ -233,3 +246,32 @@ input {
 }
 
 /*IDs*/
+
+/****************Not Found Page********************/
+.not-found-page {
+  height: 85vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  text-align: center;
+}
+
+.not-found-page h1 {
+  font-size: 3em;
+  color: var(--black);
+}
+
+.not-found-page p {
+  font-size: 1.5em;
+  color: var(--black);
+  margin-top: 30px;
+}
+
+.not-found-page a {
+  color: var(--black);
+  margin: 30px auto;
+  width: 25%;
+  font-size: 1.2em;
+}

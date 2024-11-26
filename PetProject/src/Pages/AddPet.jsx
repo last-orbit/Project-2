@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AddPet = () => {
-  const [image, setImage] = useState('');
+  const [url, setUrl] = useState('');
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
+  const [species, setSpecies] = useState('');
   const [breed, setBreed] = useState('');
   const [color, setColor] = useState('');
   const [temperament, setTemperament] = useState('');
@@ -16,9 +17,10 @@ const nav = useNavigate();
     e.preventDefault();
 
     const newPet = {
-      image: image,
+      url: url,
       name: name,
       age: age,
+      species: species,
       breed: breed,
       color: color,
       temperament: temperament,
@@ -32,9 +34,10 @@ const nav = useNavigate();
       })
       .catch((err) => {
         console.log(err);
-        setImage('');
+        setUrl('');
         setName('');
         setAge('');
+        setSpecies('');
         setBreed('');
         setColor('');
         setTemperament('');
@@ -52,10 +55,10 @@ const nav = useNavigate();
           <label>Image</label>
           <input
             type='text'
-            value={image}
+            value={url}
             placeholder='image url'
             onChange={(event) => {
-              setImage(event.target.value);
+              setUrl(event.target.value);
             }}
           />
           <label>Name</label>
@@ -78,6 +81,13 @@ const nav = useNavigate();
               setAge(event.target.value);
             }}
           />
+          <label>Species</label>
+          <select name="species" id="species">
+            <option value="dog">Dog🐶</option>
+            <option value="cat">Cat🐱</option>
+            <option value="bird">Bird🐦</option>
+            <option value="reptile">Reptile🦎</option>
+          </select>
           <label>Breed</label>
           <input
             type='text'

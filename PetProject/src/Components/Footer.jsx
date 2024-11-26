@@ -5,8 +5,10 @@ const Footer = () => {
 
 
   return (
-    <footer>Footer</footer>
-  )
+    <footer>
+      <p>PETPALS&copy; 2021</p>
+    </footer>
+  );
 }
 
 export default Footer

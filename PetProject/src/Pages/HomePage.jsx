@@ -64,13 +64,12 @@ const HomePage = () => {
   */
   return (
     <div>
-      <NavBar />
       <div className='main-container'>
         <div className='swipe left' ></div>
         <div className='ui-container'>
           <div className='profile-container'>
             <div>
-              <img className='foto' src={catPic.url} alt='cat photo' />
+              <img className='foto' src={catPics.url} alt='cat photo' />
             </div>
             <div className='info-container'>
               <div className='basic-info'>
@@ -88,7 +87,6 @@ const HomePage = () => {
         </div>
         <div className='swipe right' onClick={getRandomProfile}>{/**will become a button */}</div>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -37,6 +37,16 @@ const UpdatePet = () => {
       console.log(error);
     }
   }
+
+  async function handleDeletePet(petId) {
+    try {
+      const { data } = await axios.delete(`http://localhost:5005/pets/${petId}`);
+      console.log(data);
+      nav('/');
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <div className='add-form'>
@@ -44,7 +54,7 @@ const UpdatePet = () => {
         <form onSubmit={handleUpdatePet}>
           {' '}
           <label>Image</label>
-          <input type='text' name="image" value={petToUpdate.image} onChange={handleChange} />
+          <input type='text' name="url" value={petToUpdate.url} onChange={handleChange} />
           <label>Name</label>
           <input
             type='text'
@@ -88,7 +98,14 @@ const UpdatePet = () => {
             value={petToUpdate.description}
             onChange={handleChange}
           />
-          <button className='addPet-button'>Add Pet</button>
+          <div id='row-buttons'>
+
+          <button className='addPet-button'>Update Pet</button>
+            <button className='addPet-button delete-button' onClick={() => {
+              handleDeletePet(petId);
+          }}>Delete Pet</button>
+
+          </div>
         </form>
       </div>
     </>

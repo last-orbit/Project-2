@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -8,8 +8,7 @@ const UpdatePet = () => {
   const nav = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5005/pets/${petId}`)
+    axios(`http://localhost:5005/pets/${petId}`)
       .then((res) => {
         setPetToUpdate(res.data);
       })
@@ -17,39 +16,78 @@ const UpdatePet = () => {
         console.log(err);
       });
   }, [petId]);
-  function handleFormSubmit(e) {
-    e.preventDefault();
 
-    axios
-      .get('http://localhost:5005/pets', newPet)
-      .then((res) => {
-        console.log(res);
-        alert('Pet Added');
-        return <Navigate to='/' />;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  function handleChange(e) {
+    const whatWasTyped = e.target.value;
+    const inputThatIsUsed = e.target.name;
+    console.log(whatWasTyped, inputThatIsUsed);
+    setPetToUpdate({ ...petToUpdate, [inputThatIsUsed]: whatWasTyped });
+  }
+
+  async function handleUpdatePet(e) {
+    e.preventDefault();
+    try {
+      const { data } = await axios.put(
+        `http://localhost:5005/pets/${petId}`,
+        petToUpdate
+      );
+      console.log(data);
+      nav('/');
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <>
       <div className='add-form'>
         <h2>Update your Pet</h2>
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleUpdatePet}>
           {' '}
           <label>Image</label>
-          <input type='text' placeholder='image url' />
+          <input type='text' name="image" value={petToUpdate.image} onChange={handleChange} />
           <label>Name</label>
-          <input type='text' value={name} placeholder='Name' />
+          <input
+            type='text'
+            value={petToUpdate.name}
+            name='Name'
+            onChange={handleChange}
+          />
           <label> Age</label>
-          <input type='number' placeholder='Age' min={1} max={25} />
-          <label >Breed</label>
-          <input type="text" name=""  />
-          <label>Color</label> <input type='text' placeholder='Ex: Black, Buff-Tiger, Brown,  etc. ' />
+          <input
+            type='number'
+            name='Age'
+            value={petToUpdate.age}
+            min={1}
+            max={25}
+            onChange={handleChange}
+          />
+          <label>Breed</label>
+          <input
+            type='text'
+            value={petToUpdate.breed}
+            onChange={handleChange}
+          />
+          <label>Color</label>{' '}
+          <input
+            type='text'
+            name='color'
+            value={petToUpdate.color}
+            onChange={handleChange}
+          />
           <label>Temperament</label>{' '}
-          <input type='text' placeholder='For Ex: Social, Vocal, Intelligent' />
+          <input
+            type='text'
+            name='temperament'
+            value={petToUpdate.temperament}
+            onChange={handleChange}
+          />
           <label>Description</label>{' '}
-          <input type='text' placeholder='Description of your Pet!' />
+          <input
+            type='text'
+            name='description'
+            value={petToUpdate.description}
+            onChange={handleChange}
+          />
           <button className='addPet-button'>Add Pet</button>
         </form>
       </div>
@@ -57,4 +95,4 @@ const UpdatePet = () => {
   );
 };
 
-export default UpdatePet
+export default UpdatePet;

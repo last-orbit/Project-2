@@ -20,7 +20,7 @@ const HomePage = () => {
   const [cats, setCats] = useState([]);
   const [catPic, setCatPic] = useState([]);
   useEffect(() => {
-    axios('http://localhost:5005/cats')
+    axios('http://localhost:5005/pets')
       .then((response) => {
         setCats(response.data);
         console.log('cat data', response.data);

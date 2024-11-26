@@ -21,7 +21,7 @@ const Detailspage = () => {
         <img src={catPicUrl} />
         <div className='details-info-container'>
 
-          <h1>Get to know "{cat.name}" *rawwrrrr*</h1>
+          <h1>Get to know "{cat.name}" *raawwrrrr*</h1>
           <div>{cat.origin}</div>
           <div className='details-temperament'>{cat.temperament}</div>
           <div className='details-description'>{cat.description}</div>

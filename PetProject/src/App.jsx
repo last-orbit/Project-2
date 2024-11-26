@@ -15,12 +15,9 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/favorites' />
-        {/* <Route path='/profile/:id' /> */}
-        <Route path='/addPet' element={<AddPet/>} />
-        <Route path='/updatePet/:petId' element={<UpdatePet/> } />
+        <Route path='/addPet' element={<AddPet />} />
+        <Route path='/updatePet/:petId' element={<UpdatePet />} />
         <Route path='/profile/:id' element={<Detailspage />} />
-        <Route path='/addPet' />
-        <Route path='/updatePet' />
         <Route path='*' />
       </Routes>
       <Footer />

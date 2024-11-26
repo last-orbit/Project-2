@@ -7,6 +7,7 @@ import HomePage from './Pages/HomePage';
 import AddPet from './Pages/AddPet';
 import UpdatePet from './Pages/UpdatePet';
 import Detailspage from './Pages/Detailspage';
+import catLogo from './assets/cat-logo.png';
 import NotFound from './Pages/NotFound';
 
 function App() {

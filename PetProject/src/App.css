@@ -24,6 +24,256 @@
 
 body {
   background-color: var(--light-beige);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  background-color: var(--light-brown);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 5vh;
+}
+
+nav {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+#cat-logo {
+  height: 5vh;
+}
+
+/***********COMPONENTS*****************/
+/*NavBar*/
+/*NavBar classes*/
+
+/***********CLASSES*****************/
+
+/***********PAGES*****************/
+/*Home Page*/
+/*classes*/
+.main-container {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-container {
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+.basic-info,
+.tweets {
+  width: 100%;
+  background-color: lightgrey;
+  color: black;
+  padding: 5px;
+}
+
+.basic-info {
+  margin-bottom: 10px;
+  min-height: 100px;
+}
+
+.foto {
+  width: 700px;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.tweets {
+  border-radius: 10px;
+  /* min-height: 50px; */
+  height: fit-content;
+}
+
+.profile-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+/* .hook-up-button {
+  width: 200px;
+  height: 50px;
+  margin-top: 5px;
+  background-color: hotpink;
+  border: none;
+  border-radius: 20px;
+} */
+
+.hook-up-button {
+  background-color: hotpink;
+  display: inline-block;
+  height: 30px;
+  margin: 20px 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+
+.hook-up-button:before,
+.hook-up-button:after {
+  content: '';
+  background-color: hotpink;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+
+.hook-up-button:before {
+  top: -15px;
+  left: 0;
+}
+
+.hook-up-button:after {
+  left: 15px;
+  top: 0;
+}
+
+.swipe {
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+
+.swipe.right {
+  border-left: 30px solid hotpink;
+}
+
+/*AddPet Page*/
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto auto;
+  width: 50%;
+  min-height: 50vh;
+  background-color: var(--gray);
+}
+
+/*classes*/
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto auto 60px auto;
+  width: 70%;
+  min-height: 550px;
+  max-height: 700px;
+  background-color: var(--gray);
+}
+
+.add-form h1 {
+  margin: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 1em;
+  line-height: 1.1;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+
+
+}
+
+.addPet-button {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  background-color: var(--bright-pink);
+  border: none;
+  border-radius: 20px;
+}
+
+
+
+/*details page*/
+/*classes*/
+.pet-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.pet-details>img {
+  width: 900px;
+  height: 700px;
+  border-radius: 10px;
+}
+
+.details-info-container {
+  padding: 30px;
+}
+
+/*IDs*//***********ROOT*****************/
+:root {
+  --light-green: #D8E2DC;
+  --darker-green: #9ABCA7;
+  --light-beige: #FFE5D9;
+  --bright-pink: #F7B2AD;
+  --light-pink: #FFCAD4;
+  --darker-pink: #F4ACB7;
+  --light-brown: #CEB7B3;
+  --darker-brown: #9D8189;
+  --gray: #B7B7B7;
+  --black: #333232;
+}
+
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/***********ELEMENTS*****************/
+
+body {
+  background-color: var(--light-beige);
   color: black;
   margin: 0;
   padding: 0;

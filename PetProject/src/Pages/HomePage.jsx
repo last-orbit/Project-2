@@ -16,43 +16,40 @@ import axios from 'axios';
     */
 }
 const HomePage = () => {
-  // //console.log('hello');
   const [cats, setCats] = useState([]);
+  const [catPics, setCatPics] = useState({});
   const [catPic, setCatPic] = useState({});
   const [randomCat, setRandomCat] = useState({});
 
-  const [profileId, setProfileId] = useState(1);
-  const [imageIndex, setImageIndex] = useState(randomIndex(10));
-
-  function randomIndex(max) {
-    return Math.floor(Math.random() * max) + 1;
-  }
-  function getRandomIdCat(arr) {
-    return arr.at(randomIndex(arr.length));
+  function getRandomItem(arr) {
+    return arr.at(Math.floor(Math.random() * arr.length));
   }
 
   useEffect(() => {
-    axios('http://localhost:5005/cats')
-      .then((response) => setCats(response.data))
-      .catch((err) => console.log(err));
+    const fetchPets = async () => {
+      try {
+        const response = await fetch('http://localhost:5005/pets');
+        const response2 = await fetch(`http://localhost:5005/catpics`);
+
+        const data = await response.json();
+        const images = await response2.json();
+
+        setCats(data);
+        setRandomCat(getRandomItem(data));
+
+        setCatPics(images);
+        setCatPic(getRandomItem(images));
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPets();
   }, []);
-  //console.log(cats);
 
-  //get array of all cats ids - pick value at random index - set id value as fetch parameter
   const getRandomProfile = () => {
-    let kitty = getRandomIdCat(cats);
-
-    const profile = axios.get(`http://localhost:5005/cats/${profileId}`);
-    const image = axios.get(`http://localhost:5005/catpics/${imageIndex}`);
-    Promise.all([profile, image]).then((response) => {
-
-      setRandomCat(response.at(0).data);
-      setProfileId(kitty.id);
-
-      setCatPic(response.at(1).data);
-      setImageIndex(randomIndex(10));
-
-    }).catch((err) => console.log(err));
+    setRandomCat(getRandomItem(cats));
+    setCatPic(getRandomItem(catPics));
   };
 
   /* {cats.map((cat) => (
@@ -85,7 +82,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <Link to={`/profile/${randomCat.id}`}>
+          <Link to={`/profile/${randomCat.id}`} state={catPic.url}>
             <div className='hook-up-button'></div>
           </Link>
         </div>

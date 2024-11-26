@@ -104,7 +104,7 @@ footer {
 .foto {
   width: 700px;
   height: 500px;
-  ;
+  border-radius: 10px;
 }
 
 .tweets {
@@ -151,3 +151,24 @@ footer {
   left: 15px;
   top: 0;
 }
+
+/*details page*/
+/*classes*/
+.pet-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.pet-details>img {
+  width: 900px;
+  height: 700px;
+  border-radius: 10px;
+}
+
+.details-info-container {
+  padding: 30px;
+}
+
+/*IDs*/

@@ -18,8 +18,8 @@ import axios from 'axios';
 const HomePage = () => {
   const [cats, setCats] = useState([]);
   const [catPics, setCatPics] = useState({});
-  const [catPic, setCatPic] = useState({});
   const [randomCat, setRandomCat] = useState({});
+  const [catPic, setCatPic] = useState({});
 
   function getRandomItem(arr) {
     return arr.at(Math.floor(Math.random() * arr.length));

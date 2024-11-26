@@ -13,31 +13,20 @@ const Detailspage = () => {
     axios.get(`http://localhost:5005/pets/${id}`)
       .then(response => setCat(response.data))
       .catch((err) => console.log(err));
-    /* const fet chPet = async () => {
-      try {
-        const response = await fetch(`http://localhost:5005/pets/${id}`);
-        const data = await response.json();
-
-        setCat(data);
-        setImage(image);
-
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchPet(); */
   }, []);
 
   return (
     <div>{cat && (
-      <div>
+      <div className='pet-details'>
         <img src={catPicUrl} />
+        <div className='details-info-container'>
 
-        <div>{cat.name}</div>
-        <div>{cat.origin}</div>
-        <div>{cat.temperament}</div>
-        <div>{cat.description}</div>
+          <h1>Get to know "{cat.name}" *rawwrrrr*</h1>
+          <div>{cat.origin}</div>
+          <div className='details-temperament'>{cat.temperament}</div>
+          <div className='details-description'>{cat.description}</div>
 
+        </div>
       </div>
     )}</div>
   );

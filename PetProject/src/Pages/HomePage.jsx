@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from '../Components/NavBar';
-import Footer from '../Components/Footer';
 import axios from 'axios';
 {
   /**
@@ -17,9 +15,10 @@ import axios from 'axios';
 }
 const HomePage = () => {
   const [cats, setCats] = useState([]);
-  const [catPics, setCatPics] = useState({});
   const [randomCat, setRandomCat] = useState({});
-  const [catPic, setCatPic] = useState({});
+
+  const [catTweets, setCatTweets] = useState({});
+  const [catTweet, setCatTweet] = useState({});
 
   function getRandomItem(arr) {
     return arr.at(Math.floor(Math.random() * arr.length));
@@ -29,16 +28,16 @@ const HomePage = () => {
     const fetchPets = async () => {
       try {
         const response = await fetch('http://localhost:5005/pets');
-        const response2 = await fetch(`http://localhost:5005/catpics`);
+        const response2 = await fetch(`http://localhost:5005/tweets`);
 
         const data = await response.json();
-        const images = await response2.json();
+        const tweets = await response2.json();
 
         setCats(data);
         setRandomCat(getRandomItem(data));
 
-        setCatPics(images);
-        setCatPic(getRandomItem(images));
+        setCatTweets(tweets);
+        setCatTweet(getRandomItem(tweets));
 
       } catch (error) {
         console.log(error);
@@ -48,10 +47,11 @@ const HomePage = () => {
   }, []);
 
   const getRandomProfile = () => {
-    setRandomCat(getRandomItem(cats));
-    setCatPic(getRandomItem(catPics));
-  };
+    console.log(randomCat.id);
 
+    setRandomCat(getRandomItem(cats));
+    setCatTweet(getRandomItem(catTweets));
+  };
   /* {cats.map((cat) => (
     <Link key={cat} to={`/profile/${cat}`}>
       <div className='profile-container'>
@@ -64,13 +64,17 @@ const HomePage = () => {
   */
   return (
     <div>
-      <NavBar />
       <div className='main-container'>
-        <div className='swipe left' ></div>
         <div className='ui-container'>
           <div className='profile-container'>
             <div>
-              <img className='foto' src={catPic.url} alt='cat photo' />
+              <img className='foto' src={randomCat.url} alt='cat photo' />
+              <div className='profile-nav'>
+                <Link to={`/profile/${randomCat.id}`}>
+                  <div className='hook-up-button'></div>
+                </Link>
+                <div className='swipe right' onClick={getRandomProfile}></div>
+              </div>
             </div>
             <div className='info-container'>
               <div className='basic-info'>
@@ -78,17 +82,12 @@ const HomePage = () => {
                 <p>{randomCat.origin}</p>
               </div>
               <div className='tweets'>
-                <p>find a tweet api... third call -.-</p>
+                <p>{catTweet.quote}</p>
               </div>
             </div>
           </div>
-          <Link to={`/profile/${randomCat.id}`} state={catPic.url}>
-            <div className='hook-up-button'></div>
-          </Link>
         </div>
-        <div className='swipe right' onClick={getRandomProfile}>{/**will become a button */}</div>
       </div>
-      <Footer />
     </div>
   );
 };

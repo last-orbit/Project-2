@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const Detailspage = () => {
   const [cat, setCat] = useState();
   const { id } = useParams();
 
-  useEffect(() => {
-    axios(`http://localhost:5005/cats/${id}`)
-      .then(console.log(id))
-      .then(response => setCat(response.data))
+  const location = useLocation();
+  const catPicUrl = location.state;
 
+  useEffect(() => {
+    axios.get(`http://localhost:5005/pets/${id}`)
+      .then(response => setCat(response.data))
       .catch((err) => console.log(err));
-  }, [id]);
+  }, []);
 
   return (
     <div>{cat && (
-      <div>
-        <img src='' />
+      <div className='pet-details'>
+        <img src={catPicUrl} />
+        <div className='details-info-container'>
 
-        <div>{cat.name}</div>
-        <div>{cat.origin}</div>
-        <div>{cat.temperament}</div>
-        <div>{cat.description}</div>
+          <h1>Get to know "{cat.name}" *raawwrrrr*</h1>
+          <div>{cat.origin}</div>
+          <div className='details-temperament'>{cat.temperament}</div>
+          <div className='details-description'>{cat.description}</div>
 
+        </div>
       </div>
     )}</div>
   );

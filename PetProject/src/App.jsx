@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar';
 import HomePage from './Pages/HomePage';
 import AddPet from './Pages/AddPet';
 import UpdatePet from './Pages/UpdatePet';
+import Detailspage from './Pages/Detailspage';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         {/* <Route path='/profile/:id' /> */}
         <Route path='/addPet' element={<AddPet/>} />
         <Route path='/updatePet/:petId' element={<UpdatePet/> } />
+        <Route path='/profile/:id' element={<Detailspage />} />
+        <Route path='/addPet' />
+        <Route path='/updatePet' />
         <Route path='*' />
       </Routes>
       <Footer />

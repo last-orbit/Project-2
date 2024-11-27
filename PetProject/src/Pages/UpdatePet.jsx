@@ -49,7 +49,7 @@ const UpdatePet = () => {
   }
   return (
     <>
-      <div className='add-form'>
+      <div className='add-form main-container'>
         <h2>Update your Pet</h2>
         <form onSubmit={handleUpdatePet}>
           {' '}
@@ -100,10 +100,10 @@ const UpdatePet = () => {
           />
           <div id='row-buttons'>
 
-          <button className='addPet-button'>Update Pet</button>
+            <button className='addPet-button'>Update Pet</button>
             <button className='addPet-button delete-button' onClick={() => {
               handleDeletePet(petId);
-          }}>Delete Pet</button>
+            }}>Delete Pet</button>
 
           </div>
         </form>

@@ -12,7 +12,7 @@ const AddPet = () => {
   const [temperament, setTemperament] = useState('');
   const [description, setDescription] = useState('');
 
-const nav = useNavigate();
+  const nav = useNavigate();
   function handleFormSubmit(e) {
     e.preventDefault();
 
@@ -42,13 +42,13 @@ const nav = useNavigate();
         setColor('');
         setTemperament('');
         setDescription('');
-      })
+      });
     nav('/');
     // console.log(...cats, newPet);
   }
   return (
     <>
-      <div className='add-form'>
+      <div className='add-form main-container'>
         <h2>Add your Pet</h2>
         <form onSubmit={handleFormSubmit}>
           {' '}

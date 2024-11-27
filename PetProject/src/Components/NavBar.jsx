@@ -1,13 +1,24 @@
 import React from 'react';
 import catLogo from '../assets/cat-logo.png';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import accountLogo from '../assets/account.png';
 
 function NavBar() {
   return (
     <nav>
-      <Link to='/'>
-        <img id='cat-logo' src={catLogo} alt="a cat logo" />
-      </Link>
+        <div className='navbar'>
+          <div className='links'>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/favorites">Favorites</NavLink>
+            <NavLink to="/addPet">Add Pet</NavLink>
+        </div>
+        <Link to="/">
+          <img id='cat-logo' src={catLogo} alt='a cat logo' />
+        </Link>
+        <div className='empty-div'>
+          <NavLink to="/yourPets"><img id="account" src={accountLogo} alt="" /></NavLink>
+          </div>
+        </div>
     </nav>
   );
 }

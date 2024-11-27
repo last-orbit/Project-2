@@ -19,7 +19,7 @@ const Detailspage = () => {
         <div className='details-info-container'>
 
           <h1>Get to know "{cat.name}" *raawwrrrr*</h1>
-          <div className='details-temperament'>{cat.temperament}</div>
+          <div className='details-temperament'>I'm {cat.temperament}</div>
           <div className='details-description'>{cat.description}</div>
 
         </div>

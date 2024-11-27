@@ -1,14 +1,14 @@
 /***********ROOT*****************/
 :root {
-  --light-green: #D8E2DC;
-  --darker-green: #9ABCA7;
-  --light-beige: #FFE5D9;
-  --bright-pink: #F7B2AD;
-  --light-pink: #FFCAD4;
-  --darker-pink: #F4ACB7;
-  --light-brown: #CEB7B3;
-  --darker-brown: #9D8189;
-  --gray: #B7B7B7;
+  --light-green: #d8e2dc;
+  --darker-green: #9abca7;
+  --light-beige: #ffe5d9;
+  --bright-pink: #f7b2ad;
+  --light-pink: #ffcad4;
+  --darker-pink: #f4acb7;
+  --light-brown: #ceb7b3;
+  --darker-brown: #9d8189;
+  --gray: #b7b7b7;
   --black: #333232;
 }
 
@@ -24,7 +24,7 @@
 
 body {
   background-color: var(--light-beige);
-  color: white;
+  color: black;
   margin: 0;
   padding: 0;
 }
@@ -41,25 +41,65 @@ footer {
 }
 
 nav {
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 30px;
+  height: 7vh;
+  width: 100%;
+  background-color: var(--light-brown);
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  ;
+}
+
+.active {
+  color: var(--darker-brown);
 }
 
 #cat-logo {
   height: 5vh;
 }
 
+#account {
+  display: flex;
+  height: 4vh;
+  color: var(--light-beige);
+}
+
+footer p {
+  font-size: 0.8rem;
+}
+
 /***********COMPONENTS*****************/
 /*NavBar*/
 /*NavBar classes*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5vh;
+  padding: 0 25px;
+  margin-top: 5px;
+}
 
-/***********CLASSES*****************/
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+.empty-div {
+  width: 12.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 /***********PAGES*****************/
-/*Home Page*/
+/***********Home Page*****************/
+
 /*classes*/
 .main-container {
   height: 70vh;
@@ -108,8 +148,8 @@ nav {
 }
 
 .foto {
-  width: 700px;
-  height: 500px;
+  width: 250px;
+  height: 200px;
   border-radius: 10px;
 }
 
@@ -176,144 +216,6 @@ nav {
   border-left: 30px solid hotpink;
 }
 
-/*AddPet Page*/
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto auto;
-  width: 50%;
-  min-height: 50vh;
-  background-color: var(--gray);
-}
-
-/*classes*/
-.add-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto auto 60px auto;
-  width: 70%;
-  min-height: 550px;
-  max-height: 700px;
-  background-color: var(--gray);
-}
-
-.add-form h1 {
-  margin: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 1em;
-  line-height: 1.1;
-  background-color: #f9f9f9;
-  border: 1px solid #e5e5e5;
-  border-radius: 3px;
-
-}
-
-.addPet-button {
-  display: block;
-  width: 200px;
-  height: 50px;
-  margin: 10px auto 10px auto;
-  background-color: var(--bright-pink);
-  border: none;
-  border-radius: 20px;
-}
-
-/*details page*/
-/*classes*/
-.pet-details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-}
-
-.pet-details>img {
-  width: 900px;
-  height: 700px;
-  border-radius: 10px;
-}
-
-.details-info-container {
-  padding: 30px;
-}
-
-.navigateToUpdate {
-  width: 200px;
-  height: 50px;
-  margin: 10px auto 10px auto;
-  background-color: var(--bright-pink);
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-
-  text-align: center;
-  padding-top: 12px;
-}
-
-/*IDs*/
-/***********ROOT*****************/
-:root {
-  --light-green: #D8E2DC;
-  --darker-green: #9ABCA7;
-  --light-beige: #FFE5D9;
-  --bright-pink: #F7B2AD;
-  --light-pink: #FFCAD4;
-  --darker-pink: #F4ACB7;
-  --light-brown: #CEB7B3;
-  --darker-brown: #9D8189;
-  --gray: #B7B7B7;
-  --black: #333232;
-}
-
-* {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-/***********ELEMENTS*****************/
-
-body {
-  background-color: var(--light-beige);
-  color: black;
-  margin: 0;
-  padding: 0;
-}
-
-footer {
-  background-color: var(--light-brown);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 5vh;
-}
-
-footer p {
-  font-size: 0.8rem;
-
-}
-
-/***********COMPONENTS*****************/
-/*NavBar*/
-/*NavBar classes*/
-
-/***********CLASSES*****************/
-
-/***********PAGES*****************/
-
-
 /**************AddPet Page*****************/
 /*elements*/
 form {
@@ -342,7 +244,7 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: auto auto 60px auto;
+  margin: 60px auto 60px auto;
   width: 70%;
   min-height: 550px;
   max-height: 700px;

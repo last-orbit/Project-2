@@ -47,7 +47,7 @@ const HomePage = () => {
   }, []);
 
   const getRandomProfile = () => {
-    console.log(randomCat.id);
+    //console.log(randomCat.id);
 
     setRandomCat(getRandomItem(cats));
     setCatTweet(getRandomItem(catTweets));

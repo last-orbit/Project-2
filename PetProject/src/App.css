@@ -43,16 +43,13 @@ footer {
 nav {
   height: 7vh;
   width: 100%;
+  padding-top: 10px;
   background-color: var(--light-brown);
-  position: fixed;
-  top: 0;
-  z-index: 1;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  ;
 }
 
 .active {
@@ -82,7 +79,6 @@ footer p {
   align-items: center;
   height: 5vh;
   padding: 0 25px;
-  margin-top: 5px;
 }
 
 .links {
@@ -102,7 +98,7 @@ footer p {
 
 /*classes*/
 .main-container {
-  height: 70vh;
+  height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,15 +160,6 @@ footer p {
   justify-content: space-between;
   padding: 0 50px;
 }
-
-/* .hook-up-button {
-  width: 200px;
-  height: 50px;
-  margin-top: 5px;
-  background-color: hotpink;
-  border: none;
-  border-radius: 20px;
-} */
 
 .hook-up-button {
   background-color: hotpink;
@@ -244,10 +231,6 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 60px auto 60px auto;
-  width: 70%;
-  min-height: 550px;
-  max-height: 700px;
   background-color: var(--gray);
 }
 
@@ -281,6 +264,7 @@ input {
 /**************Detail Page*****************/
 /*classes*/
 .pet-details {
+  /* height: 70vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,8 +280,6 @@ input {
 .details-info-container {
   padding: 30px;
 }
-
-/*IDs*/
 
 /****************Not Found Page********************/
 .not-found-page {
@@ -326,4 +308,44 @@ input {
   margin: 30px auto;
   width: 25%;
   font-size: 1.2em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*to be merged*/
+.navigateToUpdate {
+  width: 200px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  background-color: var(--bright-pink);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+
+  text-align: center;
+  padding-top: 12px;
 }

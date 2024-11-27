@@ -13,7 +13,7 @@ const Detailspage = () => {
   }, []);
 
   return (
-    <div>{cat && (
+    <div className='main-container'>{cat && (
       <div className='pet-details'>
         <img src={cat.url} />
         <div className='details-info-container'>

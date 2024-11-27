@@ -49,7 +49,7 @@ const UpdatePet = () => {
   }
   return (
     <>
-      <div className='add-form'>
+      <div className='add-form main-container'>
         <h2>Update your Pet</h2>
         <form onSubmit={handleUpdatePet}>
           {' '}

@@ -42,7 +42,7 @@ footer {
 
 nav {
   height: 7vh;
-  width: 100%;
+  /* width: 100%; */
   padding-top: 10px;
   background-color: var(--light-brown);
 }
@@ -99,6 +99,7 @@ footer p {
 /*classes*/
 .main-container {
   height: 88vh;
+  padding: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,57 +113,64 @@ footer p {
 }
 
 .profile-container {
-  margin: 0 20px;
+  width: 60vw;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--light-green);
+  box-shadow: 3px 3px 3px var(--darker-green);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .info-container {
-  width: 100%;
+  height: 50vh;
+  width: 17vw;
+  gap: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
-  width: 200px;
-  height: 200px;
-  margin: 10px;
+  text-shadow: 1px 1px 1px var(--darker-brown);
 }
 
 .basic-info,
 .tweets {
   width: 100%;
-  background-color: lightgrey;
-  color: black;
-  padding: 5px;
+  min-height: fit-content;
+  background-color: var(--light-pink);
+  color: var(--black);
+  padding: 10px;
+
+  border: 3px solid var(--light-beige);
+  box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 .basic-info {
   margin-bottom: 10px;
-  min-height: 100px;
 }
 
 .foto {
-  width: 250px;
-  height: 200px;
+  width: 30vw;
+  height: 40vh;
   border-radius: 10px;
+  box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 .tweets {
   border-radius: 10px;
-  height: fit-content;
 }
 
 .profile-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 50px;
 }
 
 .hook-up-button {
-  background-color: hotpink;
+  background-color: var(--bright-pink);
   display: inline-block;
   height: 30px;
   margin: 20px 10px;
@@ -170,21 +178,24 @@ footer p {
   top: 0;
   transform: rotate(-45deg);
   width: 30px;
+
 }
 
 .hook-up-button:before,
 .hook-up-button:after {
   content: '';
-  background-color: hotpink;
+  background-color: var(--bright-pink);
   border-radius: 50%;
   height: 30px;
   position: absolute;
   width: 30px;
+
 }
 
 .hook-up-button:before {
   top: -15px;
   left: 0;
+
 }
 
 .hook-up-button:after {
@@ -197,10 +208,12 @@ footer p {
   height: 0;
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent;
+
 }
 
 .swipe.right {
-  border-left: 30px solid hotpink;
+  border-left: 30px solid var(--bright-pink);
+
 }
 
 /**************AddPet Page*****************/
@@ -264,22 +277,34 @@ input {
 /**************Detail Page*****************/
 /*classes*/
 .pet-details {
-  /* height: 70vh; */
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 30px;
   padding: 30px;
+  border-radius: 10px;
+  background-color: var(--bright-pink);
+
+  box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 .pet-details>img {
-  width: 900px;
-  height: 700px;
+  width: 50vw;
+  height: 70vh;
   border-radius: 10px;
+
+  box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 .details-info-container {
-  padding: 30px;
+  padding: 10px;
+  border-radius: 10px;
+
+  background-color: var(--light-green);
+  box-shadow: 3px 3px 3px var(--darker-brown);
+  text-shadow: 1px 1px 1px var(--darker-brown);
 }
+
 
 /****************Not Found Page********************/
 .not-found-page {
@@ -337,7 +362,7 @@ input {
 
 
 /*to be merged*/
-.navigateToUpdate {
+.navigation-button {
   width: 200px;
   height: 50px;
   margin: 10px auto 10px auto;
@@ -348,4 +373,21 @@ input {
 
   text-align: center;
   padding-top: 12px;
+
+  box-shadow: 3px 3px 3px var(--darker-brown);
+}
+
+#rawr-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.rawr-gif {
+  width: 10%;
+  height: 10%;
+}
+
+.h1-centered {
+  text-align: center;
 }

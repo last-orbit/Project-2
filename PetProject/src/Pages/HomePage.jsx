@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 {
   /**
@@ -19,6 +19,8 @@ const HomePage = () => {
 
   const [catTweets, setCatTweets] = useState({});
   const [catTweet, setCatTweet] = useState({});
+
+  const navigate = useNavigate();
 
   function getRandomItem(arr) {
     return arr.at(Math.floor(Math.random() * arr.length));
@@ -52,39 +54,35 @@ const HomePage = () => {
     setRandomCat(getRandomItem(cats));
     setCatTweet(getRandomItem(catTweets));
   };
-  /* {cats.map((cat) => (
-    <Link key={cat} to={`/profile/${cat}`}>
-      <div className='profile-container'>
-        <img src={cat.url} alt='A cute cat' />
-        <div className='info-container'>
-        </div>
-      </div>
-    </Link>
-  ))}
-  */
+
   return (
     <div>
       <div className='main-container'>
         <div className='ui-container'>
           <div className='profile-container'>
+
             <div>
               <img className='foto' src={randomCat.url} alt='cat photo' />
               <div className='profile-nav'>
-                <Link to={`/profile/${randomCat.id}`}>
-                  <div className='hook-up-button'></div>
-                </Link>
-                <div className='swipe right' onClick={getRandomProfile}></div>
+
+                <div className='navigation-button' onClick={() => navigate(`/profile/${randomCat.id}`)}>Check Pawfile</div>
+                <div className='navigation-button' onClick={getRandomProfile}>Next</div>
+
               </div>
             </div>
+
             <div className='info-container'>
+              <h2>Who and Where</h2>
               <div className='basic-info'>
-                <p>{randomCat.name}</p>
-                <p>{randomCat.origin}</p>
+                <p><b>Who:</b> {randomCat.name}</p>
+                <p><b>Where:</b> {randomCat.origin}</p>
               </div>
+              <h2>Deep Thoughts</h2>
               <div className='tweets'>
                 <p>{catTweet.quote}</p>
               </div>
             </div>
+
           </div>
         </div>
       </div>

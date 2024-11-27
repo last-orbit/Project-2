@@ -100,10 +100,10 @@ const UpdatePet = () => {
           />
           <div id='row-buttons'>
 
-          <button className='addPet-button'>Update Pet</button>
+            <button className='addPet-button'>Update Pet</button>
             <button className='addPet-button delete-button' onClick={() => {
               handleDeletePet(petId);
-          }}>Delete Pet</button>
+            }}>Delete Pet</button>
 
           </div>
         </form>

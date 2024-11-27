@@ -7,7 +7,6 @@ import HomePage from './Pages/HomePage';
 import AddPet from './Pages/AddPet';
 import UpdatePet from './Pages/UpdatePet';
 import Detailspage from './Pages/Detailspage';
-import catLogo from './assets/cat-logo.png';
 import NotFound from './Pages/NotFound';
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
         <Route path='/addPet' element={<AddPet />} />
         <Route path='/updatePet/:petId' element={<UpdatePet />} />
         <Route path='/profile/:id' element={<Detailspage />} />
-        <Route path='*' element={ <NotFound/>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

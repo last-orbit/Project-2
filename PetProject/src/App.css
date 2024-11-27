@@ -115,7 +115,6 @@ nav {
 
 .tweets {
   border-radius: 10px;
-  /* min-height: 50px; */
   height: fit-content;
 }
 
@@ -214,7 +213,6 @@ input {
   border: 1px solid #e5e5e5;
   border-radius: 3px;
 
-
 }
 
 .addPet-button {
@@ -226,8 +224,6 @@ input {
   border: none;
   border-radius: 20px;
 }
-
-
 
 /*details page*/
 /*classes*/
@@ -248,7 +244,21 @@ input {
   padding: 30px;
 }
 
-/*IDs*//***********ROOT*****************/
+.navigateToUpdate {
+  width: 200px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  background-color: var(--bright-pink);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+
+  text-align: center;
+  padding-top: 12px;
+}
+
+/*IDs*/
+/***********ROOT*****************/
 :root {
   --light-green: #D8E2DC;
   --darker-green: #9ABCA7;
@@ -289,6 +299,7 @@ footer {
   width: 100%;
   height: 5vh;
 }
+
 footer p {
   font-size: 0.8rem;
 
@@ -301,119 +312,7 @@ footer p {
 /***********CLASSES*****************/
 
 /***********PAGES*****************/
-/*Home Page*/
-/*classes*/
-.main-container {
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.ui-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.swipe {
-  width: 0;
-  height: 0;
-  border-top: 60px solid transparent;
-  border-bottom: 60px solid transparent;
-}
-
-.swipe.left {
-  border-right: 60px solid hotpink;
-}
-
-.swipe.right {
-  border-left: 60px solid hotpink;
-}
-
-.profile-container {
-  margin: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.info-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 200px;
-  height: 200px;
-  margin: 10px;
-}
-
-.basic-info,
-.tweets {
-  width: 100%;
-  background-color: lightgrey;
-  color: black;
-  padding: 5px;
-}
-
-.basic-info {
-  margin-bottom: 10px;
-  min-height: 100px;
-}
-
-.foto {
-  width: 700px;
-  height: 500px;
-  border-radius: 10px;
-}
-
-.tweets {
-  border-radius: 10px;
-  min-height: 50px;
-}
-
-/* .hook-up-button {
-  width: 200px;
-  height: 50px;
-  margin-top: 5px;
-  background-color: hotpink;
-  border: none;
-  border-radius: 20px;
-} */
-
-.hook-up-button {
-  background-color: hotpink;
-  display: inline-block;
-  height: 30px;
-  margin: 20px 10px;
-  position: relative;
-  top: 0;
-  transform: rotate(-45deg);
-  width: 30px;
-}
-
-.hook-up-button:before,
-.hook-up-button:after {
-  content: '';
-  background-color: hotpink;
-  border-radius: 50%;
-  height: 30px;
-  position: absolute;
-  width: 30px;
-}
-
-.hook-up-button:before {
-  top: -15px;
-  left: 0;
-}
-
-.hook-up-button:after {
-  left: 15px;
-  top: 0;
-}
 
 /**************AddPet Page*****************/
 /*elements*/
@@ -467,12 +366,13 @@ input {
 
 /**************Update Page*****************/
 /*IDs*/
-#row-buttons{
+#row-buttons {
   display: flex;
   gap: 1.0625rem;
 }
+
 /*classes*/
-.delete-button{
+.delete-button {
   background-color: rgba(205, 19, 19, 0.696);
 }
 

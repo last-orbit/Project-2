@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdatePet = () => {
-  const [petToUpdate, setPetToUpdate] = useState({});
+  const [petToUpdate, setPetToUpdate] = useState(null);
   const { petId } = useParams();
   const nav = useNavigate();
 
@@ -20,7 +20,7 @@ const UpdatePet = () => {
   function handleChange(e) {
     const whatWasTyped = e.target.value;
     const inputThatIsUsed = e.target.name;
-    console.log(whatWasTyped, inputThatIsUsed);
+    console.log('typed: ', whatWasTyped, 'used input: ', inputThatIsUsed);
     setPetToUpdate({ ...petToUpdate, [inputThatIsUsed]: whatWasTyped });
   }
 
@@ -31,7 +31,7 @@ const UpdatePet = () => {
         `http://localhost:5005/pets/${petId}`,
         petToUpdate
       );
-      console.log(data);
+      console.log('updated: ', data);
       nav('/');
     } catch (error) {
       console.log(error);
@@ -41,12 +41,15 @@ const UpdatePet = () => {
   async function handleDeletePet(petId) {
     try {
       const { data } = await axios.delete(`http://localhost:5005/pets/${petId}`);
-      console.log(data);
+      console.log('deleted: ', data);
       nav('/');
     } catch (error) {
       console.log(error);
     }
   }
+  //wait for data to be loaded
+  if (!petToUpdate) { return <p>loading</p>; }
+
   return (
     <>
       <div className='add-form main-container'>
@@ -58,14 +61,14 @@ const UpdatePet = () => {
           <label>Name</label>
           <input
             type='text'
+            name='name'
             value={petToUpdate.name}
-            name='Name'
             onChange={handleChange}
           />
-          <label> Age</label>
+          <label>Age</label>
           <input
             type='number'
-            name='Age'
+            name='age'
             value={petToUpdate.age}
             min={1}
             max={25}
@@ -74,6 +77,7 @@ const UpdatePet = () => {
           <label>Breed</label>
           <input
             type='text'
+            name='breed'
             value={petToUpdate.breed}
             onChange={handleChange}
           />

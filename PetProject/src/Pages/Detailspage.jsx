@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import rawr from '../assets/rawr.gif';
 import axios from 'axios';
 
-const Detailspage = ({addFavoritePet}) => {
+const Detailspage = () => {
   const [cat, setCat] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -33,7 +33,8 @@ const Detailspage = ({addFavoritePet}) => {
           <div className='navigation-button' onClick={() => navigate(`/updatePet/${id}`)}>update profile</div>
 
         </div>
-      )}
+      </div>
+    )}
     </div>
   );
 };

@@ -41,8 +41,8 @@ const UpdatePet = () => {
   async function handleDeletePet(petId) {
     try {
       const { data } = await axios.delete(`http://localhost:5005/pets/${petId}`);
-      console.log('deleted: ', data);
       nav('/');
+      alert('Pet Deleted 😿');
     } catch (error) {
       console.log(error);
     }
@@ -51,10 +51,10 @@ const UpdatePet = () => {
   if (!petToUpdate) { return <p>loading</p>; }
 
   return (
-    <>
-      <div className='add-form main-container'>
-        <h2>Update your Pet</h2>
+    <div className='main-container'>
+      <div className='add-form'>
         <form onSubmit={handleUpdatePet}>
+          <h2>Update your Pet</h2>
           {' '}
           <label>Image</label>
           <input type='text' name="url" value={petToUpdate.url} onChange={handleChange} />
@@ -112,7 +112,7 @@ const UpdatePet = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

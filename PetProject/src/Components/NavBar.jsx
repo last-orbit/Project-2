@@ -15,9 +15,9 @@ function NavBar() {
         <Link to='/'>
           <img id='cat-logo' src={catLogo} alt='a cat logo' />
         </Link>
-        <div className='empty-div '>
+        <div className='empty-div'>
           <NavLink to='/yourPets'>Your Pets</NavLink>
-          <NavLink to='/account'><img id="account"src={accountLogo} alt="account logo" /></NavLink>
+          <NavLink to='/account'><img id="account" src={accountLogo} alt="account logo" /></NavLink>
 
         </div>
       </div>

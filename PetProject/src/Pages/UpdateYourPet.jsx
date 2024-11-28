@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateYourPet = () => {
-  const [yourPetToUpdate, setYourPetToUpdate] = useState([]);
+  const [yourPetToUpdate, setYourPetToUpdate] = useState({});
   const { petId } = useParams();
   const nav = useNavigate();
 
@@ -32,7 +32,7 @@ const UpdateYourPet = () => {
         yourPetToUpdate
       );
       console.log(data);
-      nav('/');
+      nav('/yourPets');
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +44,7 @@ const UpdateYourPet = () => {
         `http://localhost:5005/yourPets/${petId}`
       );
       console.log(data);
-      nav('/');
+      nav('/yourPets');
     } catch (error) {
       console.log(error);
     }
@@ -66,13 +66,13 @@ const UpdateYourPet = () => {
           <input
             type='text'
             value={yourPetToUpdate.name}
-            name='Name'
+            name='name'
             onChange={handleChange}
           />
           <label> Age</label>
           <input
             type='number'
-            name='Age'
+            name='age'
             value={yourPetToUpdate.age}
             min={1}
             max={25}
@@ -81,6 +81,7 @@ const UpdateYourPet = () => {
           <label>Breed</label>
           <input
             type='text'
+            name='breed'
             value={yourPetToUpdate.breed}
             onChange={handleChange}
           />

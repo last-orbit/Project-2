@@ -1,29 +1,56 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const FavoritePet = ({ favoritePets, addFavoritePet }) => {
+
+const FavoritePet = ({
+  favoritePets,
+  setFavoritePets,
+
+}) => {
+  const { id } = useParams();
+
+  async function handleDeletePet(petId) {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:5005/pets/${petId}`
+      );
+      console.log('deleted: ', data);
+
+      // Update the favoritePets state after deletion
+      setFavoritePets(favoritePets.filter((pet) => pet.id !== petId));
+      alert('Pet Deleted 😿');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   console.log(favoritePets);
+
   return (
     <div className='fav-page'>
       <h1>Favorite Pets</h1>
       <div className='main-container'>
         {favoritePets.length === 0 ? (
           <h2 className='saved-flats-text'>
-            Saved Pets would go here, if you saved any
+            Your Favorite Pets would go here, if you saved any.
           </h2>
         ) : (
-          favoritePets.map((favoritePet) => (
-            <div key={favoritePet.id}>
-              <section className='pet-card'>
-                <div className='picture-container'>
-                  <img src={favoritePet.url} alt="fav-pets" />
-                </div>
-                <div className='info-container'>
-                  <h3>{favoritePet.name}</h3>
-                  <p>{favoritePet.description}</p>
-                </div>
-                <div className='btn-container'></div>
-              </section>
+          favoritePets.map((pet) => (
+            <div key={pet.id} className='pet-card'>
+              <div className='picture-container'>
+                <img className='fav-pic' src={pet.url} alt={pet.name} />
+              </div>
+              <div className='favinfo-container'>
+                <h3>{pet.name}</h3>
+                <p>{pet.description}</p>
+                <button
+                  className='btn-container'
+                  onClick={() => handleDeletePet(pet.id)}
+                >
+                  Remove from Favorites
+                </button>
+              </div>
             </div>
           ))
         )}
@@ -33,5 +60,3 @@ const FavoritePet = ({ favoritePets, addFavoritePet }) => {
 };
 
 export default FavoritePet;
-
-

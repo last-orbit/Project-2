@@ -1,4 +1,4 @@
-/***********ROOT*****************/
+/* **********ROOT****************/
 :root {
   --light-green: #d8e2dc;
   --darker-green: #9abca7;
@@ -87,11 +87,11 @@ footer p {
 }
 
 .empty-div {
-  width: 12.5rem;
+  width: 10.5rem;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-evenly;
 }
-
 
 /***********PAGES*****************/
 /***********Home Page*****************/
@@ -132,8 +132,6 @@ footer p {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-
-  text-shadow: 1px 1px 1px var(--darker-brown);
 }
 
 .basic-info,
@@ -169,53 +167,6 @@ footer p {
   justify-content: space-between;
 }
 
-.hook-up-button {
-  background-color: var(--bright-pink);
-  display: inline-block;
-  height: 30px;
-  margin: 20px 10px;
-  position: relative;
-  top: 0;
-  transform: rotate(-45deg);
-  width: 30px;
-
-}
-
-.hook-up-button:before,
-.hook-up-button:after {
-  content: '';
-  background-color: var(--bright-pink);
-  border-radius: 50%;
-  height: 30px;
-  position: absolute;
-  width: 30px;
-
-}
-
-.hook-up-button:before {
-  top: -15px;
-  left: 0;
-
-}
-
-.hook-up-button:after {
-  left: 15px;
-  top: 0;
-}
-
-.swipe {
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-
-}
-
-.swipe.right {
-  border-left: 30px solid var(--bright-pink);
-
-}
-
 /**************AddPet Page*****************/
 /*elements*/
 form {
@@ -236,20 +187,22 @@ input {
   background-color: #f9f9f9;
   border: 1px solid #e5e5e5;
   border-radius: 3px;
+  box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 /*classes*/
 .add-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-width: 50%;
+  max-height: fit-content;
   background-color: var(--gray);
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 .add-form h1 {
   margin: 20px;
 }
+
 
 .addPet-button {
   display: block;
@@ -260,6 +213,8 @@ input {
   border: none;
   border-radius: 20px;
   cursor: pointer;
+
+  box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 /**************Update Page*****************/
@@ -335,12 +290,92 @@ input {
   font-size: 1.2em;
 }
 
+/****************favorite Pets********************/
+.fav-page {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+}
 
+.fav-page h1 {
+  text-align: center;
+  margin: 2px;
+}
 
+.pet-card {
+  background-color: var(--light-green);
+  box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.1);
+  border: 0.1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 20px;
+  width: 320px;
+  height: 420px;
+  margin: 10px 10px 15px 10px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
+.pet-card img {
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
 
+.favinfo-container {
+  width: 280px;
+  height: 200px;
+}
 
+.fav-pic {
+  box-shadow: 3px 3px 3px var(--darker-brown);
+}
 
+.btn-container {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  background-color: rgba(205, 19, 19, 0.696);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px var(--darker-brown);
+}
+
+.row-button {
+  display: flex;
+}
+
+.account-page {
+  height: 85vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  text-align: center;
+}
+
+.account-page h1 {
+  font-size: 3em;
+  color: var(--black);
+}
+
+.account-page p {
+  font-size: 1.5em;
+  color: var(--black);
+  margin-top: 30px;
+}
+
+.account-page a {
+  color: var(--black);
+  margin: 30px auto;
+  width: 25%;
+  font-size: 1.2em;
+}
 
 
 
@@ -370,10 +405,20 @@ input {
   border: none;
   border-radius: 20px;
   cursor: pointer;
-
   text-align: center;
   padding-top: 12px;
+  box-shadow: 3px 3px 3px var(--darker-brown);
+}
 
+.detail-button {
+  width: 200px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  background-color: var(--bright-pink);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
   box-shadow: 3px 3px 3px var(--darker-brown);
 }
 

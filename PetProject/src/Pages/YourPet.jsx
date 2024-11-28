@@ -51,9 +51,9 @@ const YourPet = ({ yourPets, setYourPets }) => {
             <div key={yourPet.id}>
               <section className='pet-card'>
                 <div className='picture-container'>
-                  <img src={yourPet.url} alt='your-pet' />
+                  <img  className="pet-pic" src={yourPet.url} alt='your-pet' />
                 </div>
-                <div className='info-container'>
+                <div className='petinfo-container'>
                   <h3>My name is:{yourPet.name}</h3>
                   <p>I am {yourPet.age} years old</p>
                   <p>I am a {yourPet.species}</p>

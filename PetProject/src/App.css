@@ -324,12 +324,12 @@ input {
   border-radius: 10px 10px 0 0;
 }
 
-.favinfo-container {
+.favinfo-container .petinfo-container {
   width: 280px;
   height: 200px;
 }
 
-.fav-pic {
+.fav-pic  .pet-pic{
   box-shadow: 3px 3px 3px var(--darker-brown);
 }
 

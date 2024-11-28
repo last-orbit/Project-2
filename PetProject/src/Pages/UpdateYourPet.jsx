@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const UpdateYourPet = () => {
+const UpdateYourPet = ({yourPets, setYourPets}) => {
   const [yourPetToUpdate, setYourPetToUpdate] = useState({});
   const { petId } = useParams();
   const nav = useNavigate();
@@ -27,11 +27,15 @@ const UpdateYourPet = () => {
   async function handleUpdatePet(e) {
     e.preventDefault();
     try {
-      const { data } = await axios.put(
+      const { data: updatedPet } = await axios.put(
         `http://localhost:5005/yourPets/${petId}`,
         yourPetToUpdate
-      );
-      console.log(data);
+        );
+        const updatedPets = yourPets.map((pet) =>
+          pet.id === petId ? updatedPet : pet
+        );
+        setYourPets(updatedPets);
+        console.log("pet updated", updatedPet);
       nav('/yourPets');
     } catch (error) {
       console.log(error);

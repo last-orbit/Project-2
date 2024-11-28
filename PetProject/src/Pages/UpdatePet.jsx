@@ -41,8 +41,8 @@ const UpdatePet = () => {
   async function handleDeletePet(petId) {
     try {
       const { data } = await axios.delete(`http://localhost:5005/pets/${petId}`);
-      console.log('deleted: ', data);
       nav('/');
+      alert('Pet Deleted 😿');
     } catch (error) {
       console.log(error);
     }

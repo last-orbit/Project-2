@@ -1,4 +1,5 @@
-/***********ROOT*****************/
+
+/* **********ROOT****************/
 :root {
   --light-green: #d8e2dc;
   --darker-green: #9abca7;
@@ -87,9 +88,9 @@ footer p {
 }
 
 .empty-div {
-  width: 12.5rem;
+  width: 10.5rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
 }
 
 
@@ -349,7 +350,7 @@ input {
 }
 
 .pet-card{
-  background-color: var(--white);
+  background-color: var(--light-green);
   box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.1);
   border: 0.1px solid rgba(128, 128, 128, 0.2);
   border-radius: 20px;
@@ -369,9 +370,23 @@ input {
   border-radius: 10px 10px 0 0;
 }
 
-.info-container{
+.favinfo-container{
   width: 280px;
   height: 200px;
+}
+
+.btn-container{
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  background-color: rgba(205, 19, 19, 0.696);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.row-button{
+  display: flex;
 }
 
 .account-page {
@@ -430,10 +445,20 @@ input {
   border: none;
   border-radius: 20px;
   cursor: pointer;
-
   text-align: center;
   padding-top: 12px;
+  box-shadow: 3px 3px 3px var(--darker-brown);
+}
 
+.detail-button {
+  width: 200px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  background-color: var(--bright-pink);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
   box-shadow: 3px 3px 3px var(--darker-brown);
 }
 

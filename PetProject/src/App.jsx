@@ -52,6 +52,8 @@ function App() {
       return;
     }
     setFavoritePets([...favoritePets, pet]);
+      alert('Pet added to favorite');
+
     console.log([...favoritePets, pet]);
   }
 
@@ -73,7 +75,12 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route
           path='/favorites'
-          element={<FavoritePet favoritePets={favoritePets} pets={pets} />}
+          element={
+            <FavoritePet
+              favoritePets={favoritePets}
+              setFavoritePets={setFavoritePets}
+            />
+          }
         />
         <Route path='/addPet' element={<AddPet />} />
         <Route path='/updatePet/:petId' element={<UpdatePet />} />

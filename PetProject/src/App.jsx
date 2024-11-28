@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Footer from './Components/Footer';
@@ -8,12 +8,64 @@ import AddPet from './Pages/AddPet';
 import UpdatePet from './Pages/UpdatePet';
 import Detailspage from './Pages/Detailspage';
 import NotFound from './Pages/NotFound';
-import SavedPets from './Pages/SavedPets';
+import FavoritePet from './Pages/FavoritePet';
 import YourPet from './Pages/YourPet';
+import AccountPage from './Pages/AccountPage';
+import UpdateYourPet from './Pages/UpdateYourPet';
 
 function App() {
+  const [pets, setPets] = useState([]);
   const [favoritePets, setFavoritePets] = useState([]);
   const [yourPets, setYourPets] = useState([]);
+
+  useEffect(() => {
+    const fetchInfo = async () => {
+      try {
+        const response = await fetch('http://localhost:5005/pets');
+        const data = await response.json();
+        setPets(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchInfo();
+  }, []);
+  useEffect(() => {
+    const fetchyourPets = async () => {
+      try {
+        const response = await fetch('http://localhost:5005/yourPets');
+        const data = await response.json();
+        setYourPets(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchyourPets();
+  }, []);
+
+  function addFavoritePet(id) {
+    console.log('added favorite pet with id', id);
+    const pet = pets.find((pet) => pet.id == id);
+    console.log(pet, pets);
+    const filterPet = favoritePets.filter((pet) => pet.id === id);
+    if (filterPet.length > 0) {
+      return;
+    }
+    setFavoritePets([...favoritePets, pet]);
+    console.log([...favoritePets, pet]);
+  }
+
+  function addYourPet(id) {
+    console.log('added favorite pet with id', id);
+    const pet = pets.find((pet) => pet.id == id);
+    console.log(pet, pets);
+    const filterPet = yourPets.filter((pet) => pet.id === id);
+    if (filterPet.length > 0) {
+      return;
+    }
+    setYourPets([...yourPets, pet]);
+    console.log([...yourPets, pet]);
+  }
   return (
     <div>
       <NavBar />
@@ -21,18 +73,40 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route
           path='/favorites'
-          element={<SavedPets favoritePets={favoritePets} />}
+          element={<FavoritePet favoritePets={favoritePets} pets={pets} />}
         />
         <Route path='/addPet' element={<AddPet />} />
         <Route path='/updatePet/:petId' element={<UpdatePet />} />
         <Route
           path='/profile/:id'
           element={
-            <Detailspage yourPets={yourPets} setYourPets={setYourPets} />
+            <Detailspage
+              yourPets={yourPets}
+              pets={pets}
+              setYourPets={setYourPets}
+              addFavoritePet={addFavoritePet}
+            />
           }
         />
-        <Route path='/yourPets' element={<YourPet />} />
+        <Route
+          path='/yourPets'
+          element={
+            <YourPet
+              pets={pets}
+              yourPets={yourPets}
+              setYourPets={setYourPets}
+              addYourPet={addYourPet}
+            />
+          }
+        />
+        <Route
+          path='/updateYourPet/:petId'
+          element={
+            <UpdateYourPet yourPets={yourPets} setYourPets={setYourPets} />
+          }
+        />
         <Route path='*' element={<NotFound />} />
+        <Route path='/account' element={<AccountPage />} />
       </Routes>
       <Footer />
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const Detailspage = () => {
+const Detailspage = ({addFavoritePet}) => {
   const [cat, setCat] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,20 +13,27 @@ const Detailspage = () => {
   }, []);
 
   return (
-    <div className='main-container'>{cat && (
-      <div className='pet-details'>
-        <img src={cat.url} />
-        <div className='details-info-container'>
-
-          <h1>Get to know "{cat.name}" *raawwrrrr*</h1>
-          <div className='details-temperament'>I'm {cat.temperament}</div>
-          <div className='details-description'>{cat.description}</div>
-
-          <div className='navigateToUpdate' onClick={() => navigate(`/updatePet/${id}`)}>update profile</div>
-
+    <div className='main-container'>
+      {cat && (
+        <div className='pet-details'>
+          <img src={cat.url} />
+          <div className='details-info-container'>
+            <h1>Get to know "{cat.name}" *raawwrrrr*</h1>
+            <div className='details-temperament'>I'm {cat.temperament}</div>
+            <div className='details-description'>{cat.description}</div>
+            <div>
+              <div
+                className='navigateToUpdate'
+                onClick={() => navigate(`/updatePet/${id}`)}
+              >
+                update profile
+              </div>
+              <button onClick={()=> addFavoritePet(cat.id)}>Heart</button>
+            </div>
+          </div>
         </div>
-      </div>
-    )}</div>
+      )}
+    </div>
   );
 };
 

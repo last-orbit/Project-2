@@ -27,10 +27,12 @@ const AddPet = () => {
       description: description,
 
     };
-    axios.post('http://localhost:5005/pets', newPet)
-      .then(({ res }) => {
+    axios.post('http://localhost:5005/yourPets', newPet)
+      .then(( res ) => {
         console.log(res);
         alert('Pet Added');
+    nav('/');
+
       })
       .catch((err) => {
         console.log(err);
@@ -43,7 +45,6 @@ const AddPet = () => {
         setTemperament('');
         setDescription('');
       });
-    nav('/');
     // console.log(...cats, newPet);
   }
   return (
@@ -82,7 +83,7 @@ const AddPet = () => {
             }}
           />
           <label>Species</label>
-          <select name="species" id="species">
+          <select name="species" id="species" value={species} onChange={(event) => { setSpecies(event.target.value)}}>
             <option value="dog">Dog🐶</option>
             <option value="cat">Cat🐱</option>
             <option value="bird">Bird🐦</option>

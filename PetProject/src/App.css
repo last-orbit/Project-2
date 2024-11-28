@@ -272,8 +272,8 @@ input {
 }
 
 .pet-details>img {
-  width: 900px;
-  height: 700px;
+  width:50vw;
+  height: 70vh;
   border-radius: 10px;
 }
 
@@ -310,12 +310,72 @@ input {
   font-size: 1.2em;
 }
 
+/****************favorite Pets********************/
+.fav-page{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+}
 
+.fav-page h1 {
+  text-align: center;
+  margin: 2px;
+}
 
+.pet-card{
+  background-color: var(--white);
+  box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.1);
+  border: 0.1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 20px;
+  width: 320px;
+  height: 420px;
+  margin: 10px 10px 15px 10px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
+.pet-card img{
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
 
+.info-container{
+  width: 280px;
+  height: 200px;
+}
 
+.account-page {
+  height: 85vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  text-align: center;
+}
 
+.account-page h1 {
+  font-size: 3em;
+  color: var(--black);
+}
+
+.account-page p {
+  font-size: 1.5em;
+  color: var(--black);
+  margin-top: 30px;
+}
+
+.account-page a {
+  color: var(--black);
+  margin: 30px auto;
+  width: 25%;
+  font-size: 1.2em;
+}
 
 
 

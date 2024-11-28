@@ -101,6 +101,7 @@ footer p {
   height: 88vh;
   padding: 30px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
@@ -309,12 +310,13 @@ input {
   border: 0.1px solid rgba(128, 128, 128, 0.2);
   border-radius: 20px;
   width: 320px;
-  height: 420px;
-  margin: 10px 10px 15px 10px;
+  height: 82vh;
+  margin: 10px 10px 50px 10px;
   padding: 20px;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .pet-card img {

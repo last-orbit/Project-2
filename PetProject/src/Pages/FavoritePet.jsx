@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 const FavoritePet = ({
@@ -39,7 +39,7 @@ const FavoritePet = ({
           favoritePets.map((pet) => (
             <div key={pet.id} className='pet-card'>
               <div className='picture-container'>
-                <img src={pet.url} alt={pet.name} />
+                <img className='fav-pic' src={pet.url} alt={pet.name} />
               </div>
               <div className='favinfo-container'>
                 <h3>{pet.name}</h3>

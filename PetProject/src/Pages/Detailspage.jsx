@@ -38,7 +38,7 @@ const Detailspage = ({ addFavoritePet }) => {
             <div className='row-button'>
               <button className='detail-button' onClick={() => navigate(`/updatePet/${id}`)}>Update Profile
               </button>
-              <button  className="detail-button" onClick={()=> addFavoritePet(cat.id)}>Favorite</button>
+              <button className="detail-button" onClick={() => addFavoritePet(cat.id)}>Favorite</button>
             </div>
           </div>
         </div>

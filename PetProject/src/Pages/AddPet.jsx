@@ -28,10 +28,10 @@ const AddPet = () => {
 
     };
     axios.post('http://localhost:5005/yourPets', newPet)
-      .then(( res ) => {
+      .then((res) => {
         console.log(res);
         alert('Pet Added');
-    nav('/');
+        nav('/');
 
       })
       .catch((err) => {
@@ -48,10 +48,10 @@ const AddPet = () => {
     // console.log(...cats, newPet);
   }
   return (
-    <>
-      <div className='add-form main-container'>
-        <h2>Add your Pet</h2>
+    <div className='main-container'>
+      <div className='add-form'>
         <form onSubmit={handleFormSubmit}>
+          <h2>Add your Pet</h2>
           {' '}
           <label>Image</label>
           <input
@@ -83,7 +83,7 @@ const AddPet = () => {
             }}
           />
           <label>Species</label>
-          <select name="species" id="species" value={species} onChange={(event) => { setSpecies(event.target.value)}}>
+          <select name="species" id="species" value={species} onChange={(event) => { setSpecies(event.target.value); }}>
             <option value="dog">Dog🐶</option>
             <option value="cat">Cat🐱</option>
             <option value="bird">Bird🐦</option>
@@ -128,7 +128,7 @@ const AddPet = () => {
           <button className='addPet-button'>Add Pet</button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

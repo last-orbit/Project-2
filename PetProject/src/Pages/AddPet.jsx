@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AddPet = () => {
+const AddPet = ({yourPets, setYourPets}) => {
   const [url, setUrl] = useState('');
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
@@ -30,12 +30,9 @@ const AddPet = () => {
     axios.post('http://localhost:5005/yourPets', newPet)
       .then((res) => {
         console.log(res);
+        setYourPets([...yourPets, res.data]);
         alert('Pet Added');
         nav('/');
-
-      })
-      .catch((err) => {
-        console.log(err);
         setUrl('');
         setName('');
         setAge('');
@@ -44,6 +41,9 @@ const AddPet = () => {
         setColor('');
         setTemperament('');
         setDescription('');
+      })
+      .catch((err) => {
+        console.log(err);
       });
     // console.log(...cats, newPet);
   }

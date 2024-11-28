@@ -3,14 +3,14 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateYourPet = ({yourPets, setYourPets}) => {
-  const [yourPetToUpdate, setYourPetToUpdate] = useState({});
+  const [yourPetToUpdate, setYourPetToUpdate] = useState(null);
   const { petId } = useParams();
   const nav = useNavigate();
 
   useEffect(() => {
     axios(`http://localhost:5005/yourPets/${petId}`)
-      .then((res) => {
-        setYourPetToUpdate(res.data);
+      .then(({data}) => {
+        setYourPetToUpdate(data);
       })
       .catch((err) => {
         console.log(err);
@@ -20,22 +20,30 @@ const UpdateYourPet = ({yourPets, setYourPets}) => {
   function handleChange(e) {
     const whatWasTyped = e.target.value;
     const inputThatIsUsed = e.target.name;
-    console.log(whatWasTyped, inputThatIsUsed);
     setYourPetToUpdate({ ...yourPetToUpdate, [inputThatIsUsed]: whatWasTyped });
   }
 
   async function handleUpdatePet(e) {
     e.preventDefault();
     try {
-      const { data: updatedPet } = await axios.put(
+      const { data } = await axios.put(
         `http://localhost:5005/yourPets/${petId}`,
         yourPetToUpdate
         );
-        const updatedPets = yourPets.map((pet) =>
-          pet.id === petId ? updatedPet : pet
-        );
-        setYourPets(updatedPets);
-        console.log("pet updated", updatedPet);
+        console.log('this is our updated pets', data);
+        // const updatedPets = yourPets.map((pet) =>
+        //   pet.id === petId ? updatedPet : pet
+        // );
+        setYourPetToUpdate(data);
+        const yourPetsMap = yourPets.map((pet) => {
+            if (pet.id == petId) {
+                return data;
+            } else {
+                return pet;
+        }
+        })
+        setYourPets(yourPetsMap);
+        console.log("pet updated" , data);
       nav('/yourPets');
     } catch (error) {
       console.log(error);
@@ -52,7 +60,8 @@ const UpdateYourPet = ({yourPets, setYourPets}) => {
     } catch (error) {
       console.log(error);
     }
-  }
+    }
+    if (!yourPetToUpdate) { return <p>loading</p>; }
   return (
     <>
       <div className='add-form main-container'>

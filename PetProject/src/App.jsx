@@ -44,9 +44,7 @@ function App() {
   }, []);
 
   function addFavoritePet(id) {
-    console.log('added favorite pet with id', id);
     const pet = pets.find((pet) => pet.id == id);
-    console.log(pet, pets);
     const filterPet = favoritePets.filter((pet) => pet.id === id);
     if (filterPet.length > 0) {
       return;
@@ -54,19 +52,19 @@ function App() {
     setFavoritePets([...favoritePets, pet]);
       alert('Pet added to favorite');
 
-    console.log([...favoritePets, pet]);
+    // console.log([...favoritePets, pet]);
   }
 
   function addYourPet(id) {
-    console.log('added favorite pet with id', id);
+    // console.log('added favorite pet with id', id);
     const pet = pets.find((pet) => pet.id == id);
-    console.log(pet, pets);
+    // console.log(pet, pets);
     const filterPet = yourPets.filter((pet) => pet.id === id);
     if (filterPet.length > 0) {
       return;
     }
     setYourPets([...yourPets, pet]);
-    console.log([...yourPets, pet]);
+    // console.log([...yourPets, pet]);
   }
   return (
     <div>
@@ -82,7 +80,10 @@ function App() {
             />
           }
         />
-        <Route path='/addPet' element={<AddPet />} />
+        <Route
+          path='/addPet'
+          element={<AddPet yourPets={yourPets} setYourPets={setYourPets} />}
+        />
         <Route path='/updatePet/:petId' element={<UpdatePet />} />
         <Route
           path='/profile/:id'

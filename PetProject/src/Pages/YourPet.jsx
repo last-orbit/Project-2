@@ -3,28 +3,41 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const YourPet = ({ yourPets, setYourPets }) => {
-    const { id } = useParams();
-    const navigate = useNavigate();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchYourPets = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5005/yourPets/${id}`
+        );
+        setYourPets(response.data);
+      } catch (error) {
+        console.error('Error fetching pet:', error);
+      }
+    };
 
+    fetchYourPets();
+  }, [id]);
 
-    async function handleDeletePet(petId) {
+  async function handleDeletePet(petId) {
+    console.log('deleted: ', petId);
     try {
       const { data } = await axios.delete(
-        `http://localhost:5005/pets/${petId}`
+        `http://localhost:5005/yourPets/${petId}`
       );
-      console.log('deleted: ', data);
 
-      // Update the favoritePets state after deletion
+      // Update the youPets state after deletion
       setYourPets(yourPets.filter((pet) => pet.id !== petId));
-      alert('Pet Deleted 😿');
+      //   alert('Pet Deleted 😿');
     } catch (error) {
       console.log(error);
     }
   }
 
-    console.log(yourPets);
-    if(!yourPets) return <p>Loading...</p>
+  console.log(yourPets);
+  if (!yourPets) return <p>Loading...</p>;
   return (
     <div className='yourPets-page'>
       <h1>Your Pets</h1>
@@ -55,8 +68,13 @@ const YourPet = ({ yourPets, setYourPets }) => {
                     onClick={() => navigate(`/updateYourPet/${yourPet.id}`)}
                   >
                     Update Your Pet
-                          </button>
-                    <button className='addPet-button delete-button' onClick={() => handleDeletePet(yourPet.id)}>Delete Your Pet</button>
+                  </button>
+                  <button
+                    className='addPet-button delete-button'
+                    onClick={() => handleDeletePet(yourPet.id)}
+                  >
+                    Delete Your Pet
+                  </button>
                 </div>
               </section>
             </div>

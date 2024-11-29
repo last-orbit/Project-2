@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 
 const AddPet = ({yourPets, setYourPets}) => {
   const [url, setUrl] = useState('');
@@ -27,7 +28,8 @@ const AddPet = ({yourPets, setYourPets}) => {
       description: description,
 
     };
-    axios.post('http://localhost:5005/yourPets', newPet)
+    axios
+      .post(`${API_URL}/yourPets`, newPet)
       .then((res) => {
         console.log(res);
         setYourPets([...yourPets, res.data]);

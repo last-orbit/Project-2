@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     const fetchInfo = async () => {
       try {
-        const response = await fetch('http://localhost:5005/pets');
+        const response = await fetch(`${API_URL}/pets`);
         const data = await response.json();
         setPets(data);
       } catch (error) {
@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     const fetchyourPets = async () => {
       try {
-        const response = await fetch('http://localhost:5005/yourPets');
+        const response = await fetch(`${API_URL}/yourPets`);
         const data = await response.json();
         setYourPets(data);
       } catch (error) {

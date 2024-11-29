@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../config';
 
 const UpdateYourPet = ({yourPets, setYourPets}) => {
   const [yourPetToUpdate, setYourPetToUpdate] = useState(null);
@@ -8,8 +9,8 @@ const UpdateYourPet = ({yourPets, setYourPets}) => {
   const nav = useNavigate();
 
   useEffect(() => {
-    axios(`http://localhost:5005/yourPets/${petId}`)
-      .then(({data}) => {
+    axios(`${API_URL}/yourPets/${petId}`)
+      .then(({ data }) => {
         setYourPetToUpdate(data);
       })
       .catch((err) => {
@@ -27,9 +28,9 @@ const UpdateYourPet = ({yourPets, setYourPets}) => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `http://localhost:5005/yourPets/${petId}`,
+        `${API_URL}/yourPets/${petId}`,
         yourPetToUpdate
-        );
+      );
         console.log('this is our updated pets', data);
         // const updatedPets = yourPets.map((pet) =>
         //   pet.id === petId ? updatedPet : pet
@@ -52,9 +53,7 @@ const UpdateYourPet = ({yourPets, setYourPets}) => {
 
   async function handleDeletePet(petId) {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5005/yourPets/${petId}`
-      );
+      const { data } = await axios.delete(`${API_URL}/yourPets/${petId}`);
       console.log(data);
       nav('/yourPets');
     } catch (error) {

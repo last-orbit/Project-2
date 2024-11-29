@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../config';
 
 const UpdatePet = () => {
   const [petToUpdate, setPetToUpdate] = useState(null);
@@ -8,7 +9,7 @@ const UpdatePet = () => {
   const nav = useNavigate();
 
   useEffect(() => {
-    axios(`http://localhost:5005/pets/${petId}`)
+    axios(`${API_URL}/pets/${petId}`)
       .then((res) => {
         setPetToUpdate(res.data);
       })
@@ -27,10 +28,7 @@ const UpdatePet = () => {
   async function handleUpdatePet(e) {
     e.preventDefault();
     try {
-      const { data } = await axios.put(
-        `http://localhost:5005/pets/${petId}`,
-        petToUpdate
-      );
+      const { data } = await axios.put(`${API_URL}/pets/${petId}`, petToUpdate);
       console.log('updated: ', data);
       nav('/');
     } catch (error) {
@@ -40,7 +38,7 @@ const UpdatePet = () => {
 
   async function handleDeletePet(petId) {
     try {
-      const { data } = await axios.delete(`http://localhost:5005/pets/${petId}`);
+      const { data } = await axios.delete(`${API_URL}/${petId}`);
       nav('/');
       alert('Pet Deleted 😿');
     } catch (error) {

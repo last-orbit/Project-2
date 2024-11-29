@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const YourPet = ({ yourPets, setYourPets }) => {
   const { id } = useParams();
@@ -9,9 +10,7 @@ const YourPet = ({ yourPets, setYourPets }) => {
   useEffect(() => {
     const fetchYourPets = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5005/yourPets/${id}`
-        );
+        const response = await axios.get(`${API_URL}/yourPets/${id}`);
         setYourPets(response.data);
       } catch (error) {
         console.error('Error fetching pet:', error);
@@ -24,9 +23,7 @@ const YourPet = ({ yourPets, setYourPets }) => {
   async function handleDeletePet(petId) {
     console.log('deleted: ', petId);
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5005/yourPets/${petId}`
-      );
+      const { data } = await axios.delete(`${API_URL}/yourPets/${petId}`);
 
       // Update the youPets state after deletion
       setYourPets(yourPets.filter((pet) => pet.id !== petId));

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import rawr from '../assets/rawr.gif';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const Detailspage = ({ addFavoritePet }) => {
   const [cat, setCat] = useState();
@@ -10,7 +11,7 @@ const Detailspage = ({ addFavoritePet }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/pets/${id}`)
+      .get(`${API_URL}/pets/${id}`)
       .then((response) => setCat(response.data))
       .catch((err) => console.log(err));
   }, []);

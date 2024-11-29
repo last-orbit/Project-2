@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../config';
 {
   /**
     APIs
@@ -29,8 +30,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch('http://localhost:5005/pets');
-        const response2 = await fetch(`http://localhost:5005/tweets`);
+        const response = await fetch(`${API_URL}/pets`);
+        const response2 = await fetch(`${API_URL}/tweets`);
 
         const data = await response.json();
         const tweets = await response2.json();

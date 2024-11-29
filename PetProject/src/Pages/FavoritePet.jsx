@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { API_URL } from '../config';
 
 
 const FavoritePet = ({
@@ -12,9 +13,7 @@ const FavoritePet = ({
 
   async function handleDeletePet(petId) {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5005/pets/${petId}`
-      );
+      const { data } = await axios.delete(`${API_URL}/pets/${petId}`);
       //console.log('deleted: ', data);
       // Update the favoritePets state after deletion
       setFavoritePets(favoritePets.filter((pet) => pet.id !== petId));

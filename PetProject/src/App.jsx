@@ -12,6 +12,7 @@ import FavoritePet from './Pages/FavoritePet';
 import YourPet from './Pages/YourPet';
 import AccountPage from './Pages/AccountPage';
 import UpdateYourPet from './Pages/UpdateYourPet';
+import { API_URL } from './config';
 
 function App() {
   const [pets, setPets] = useState([]);
@@ -66,6 +67,7 @@ function App() {
     setYourPets([...yourPets, pet]);
     // console.log([...yourPets, pet]);
   }
+  console.log('here', API_URL)
   return (
     <div>
       <NavBar />

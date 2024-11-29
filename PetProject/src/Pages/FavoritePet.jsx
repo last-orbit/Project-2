@@ -15,8 +15,7 @@ const FavoritePet = ({
       const { data } = await axios.delete(
         `http://localhost:5005/pets/${petId}`
       );
-      console.log('deleted: ', data);
-
+      //console.log('deleted: ', data);
       // Update the favoritePets state after deletion
       setFavoritePets(favoritePets.filter((pet) => pet.id !== petId));
       alert('Pet Deleted 😿');
@@ -25,12 +24,12 @@ const FavoritePet = ({
     }
   }
 
-  console.log(favoritePets);
+  //console.log(favoritePets);
 
   return (
     <div className='fav-page'>
       <h1>Favorite Pets</h1>
-      <div className='main-container'>
+      <div className='main-container fav'>
         {favoritePets.length === 0 ? (
           <h2 className='saved-flats-text'>
             Your Favorite Pets would go here, if you saved any.

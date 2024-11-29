@@ -30,6 +30,7 @@ function App() {
     };
     fetchInfo();
   }, []);
+
   useEffect(() => {
     const fetchyourPets = async () => {
       try {
@@ -50,7 +51,7 @@ function App() {
       return;
     }
     setFavoritePets([...favoritePets, pet]);
-      alert('Pet added to favorite');
+    alert('Pet added to favorite');
 
     // console.log([...favoritePets, pet]);
   }

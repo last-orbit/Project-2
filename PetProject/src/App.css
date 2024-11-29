@@ -204,7 +204,6 @@ input {
   margin: 20px;
 }
 
-
 .addPet-button {
   display: block;
   width: 200px;
@@ -310,20 +309,30 @@ input {
   border: 0.1px solid rgba(128, 128, 128, 0.2);
   border-radius: 20px;
   width: 320px;
-  height: 82vh;
-  margin: 10px 10px 50px 10px;
+  height: 40vh;
+  /* margin: 10px 10px 50px 10px; */
   padding: 20px;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.fav {
+  padding-top: 5px;
+  padding-bottom: 50px;
+  gap: 5px
 }
 
 .pet-card img {
-  width: 280px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
+}
+
+.picture-container {
+  height: 50%;
 }
 
 .favinfo-container .petinfo-container {
@@ -331,14 +340,20 @@ input {
   height: 200px;
 }
 
-.fav-pic  .pet-pic{
+.favinfo-container>p,
+.petinfo-container>p {
+  overflow: hidden;
+  height: 8vh;
+}
+
+.fav-pic .pet-pic {
   box-shadow: 3px 3px 3px var(--darker-brown);
 }
 
 .btn-container {
   display: block;
-  width: 200px;
-  height: 50px;
+  width: 60%;
+  height: 28%;
   margin: 10px auto 10px auto;
   background-color: rgba(205, 19, 19, 0.696);
   border: none;
@@ -349,6 +364,12 @@ input {
 
 .row-button {
   display: flex;
+  gap: 10px;
+}
+
+.small-btn {
+  height: 100%;
+  width: 100%;
 }
 
 .account-page {
